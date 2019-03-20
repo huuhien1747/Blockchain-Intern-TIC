@@ -1,0 +1,19 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of heroes"
+        (click)= "onSelect(hero)" 
+        [class.selected]="hero === selectedHero"
+    >
+    <!--Add Click event for li by Anglular syntax,
+    --- when user click to <li>, onSelect(hero) expression will execute
+    --- [Class.selected] set CSS: when two heroes (choose and selected) is different, Angular remove the class
+    -->
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+
+<!-- add binding to hero detail component - this child component
+---- electedHero is Angular propety binding
+-->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
