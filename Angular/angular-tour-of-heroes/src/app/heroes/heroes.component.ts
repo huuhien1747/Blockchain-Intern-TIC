@@ -26,7 +26,18 @@ export class HeroesComponent implements OnInit {
   
   //function to retrieve the heroes from services
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
+    //HeroService.getHeroes() is ASynchoronous operation
+    //it return a Observable because HttpClient.get() returns an Observable.
+    
+    //this.heroes = this.heroService.getHeroes(); 
+
+
+    //this version can load page before the heroes load from Services - Asynchoronus
+    this.heroService.getHeroes()
+    .subscribe(heroes => this.heroes = heroes);
+
+    
+
   }
 
   ngOnInit() {
